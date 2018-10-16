@@ -1,0 +1,49 @@
+{
+  "name": "N8N-Protractor-Automated-Functional-Test-Framework",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Automated functional test framework with protractor cucumber allure",
+  "homepage": "http://n8n.asia",
+  "keywords": [
+    "protractor",
+    "cucumber",
+    "allure reports",
+    "angular",
+    "angularjs",
+    "testing",
+    "behaviour driven development",
+    "bdd",
+    "selenium",
+    "webdriverJS",
+    "gherkin",
+    "automation testing"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "protractor config/config.js",
+    "test-parallel": "protractor config/multiConfig.js",
+    "test-ob": "protractor config/browserConfig.js",
+    "webdriver-start": "webdriver-manager start",
+    "webdriver-update": "webdriver-manager update"
+  },
+  "author": "Nhat Nguyen <hangnhat57@gmail.com>",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "cucumber": "^3.2.1",
+    "cucumber-html-report": "^0.6.2",
+    "cucumber-html-reporter": "^3.0.4",
+    "mkdirp": "^0.5.1",
+    "protractor": "^5.2.0",
+    "protractor-cucumber-framework": "^4.1.1"
+  },
+  "repository": "https://github.com/hangnhat57",
+  "dependencies": {
+    "cucumberjs-allure2-reporter": "^1.3.0",
+    "dotenv": "^6.1.0",
+    "protractor-multiple-cucumber-html-reporter-plugin": "^1.8.0"
+  }
+}
