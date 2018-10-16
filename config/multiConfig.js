@@ -1,11 +1,12 @@
-require('dotenv').config();
+require('dotenv').config()
 const htmlReports = process.cwd() +'/reports/html';
 const jsonReports = process.cwd() + "/reports/json";
+const baseUrls = require('./baseUrls')
 var dateTime = require('node-datetime');
 
 exports.config = {
-    seleniumAddress: "http://127.0.0.1:4444/wd/hub",
-    baseUrl: "http://www.google.com",
+    seleniumAddress: process.env.SELENIUM_HUB,
+    baseUrl: baseUrls[process.env.TEST_ENVIRONMENT],
     chromeOnly: false,
     multiCapabilities: [
     {
@@ -58,16 +59,16 @@ exports.config = {
             automaticallyGenerateReport:true,
             removeExistingJsonReportFile:true,
             displayDuration:true,
-            pageTitle:'N8N Automated Test Reporting',
-            reportName:'N8N Automated Test Report',
-            pageFooter:'<div><p>   N8N Automated Test Report</p></div>',
+            pageTitle:'N8N Automation Test Report',
+            reportName:'N8N Automation Test Report',
+            pageFooter:'<div align="center"><p>   N8N Automation Test Report</p></div>',
             reportPath:htmlReports,
             jsonDir:jsonReports,
             customData: {
                 title: 'Run info',
                 data: [
                     {label: 'Project', value: 'TwentyCI '},
-                    {label: 'Environment', value: 'Staging'},
+                    {label: 'Environment', value: process.env.TEST_ENVIRONMENT.toUpperCase()},
                     {label: 'Execution Start Time', value: dateTime.create().format('H:M d-m-Y')},
 
                 ]

@@ -1,0 +1,3 @@
+BROWSER_NAME=firefox
+SELENIUM_HUB=http://127.0.0.1:4444/wd/hub
+TEST_ENVIRONMENT=demo

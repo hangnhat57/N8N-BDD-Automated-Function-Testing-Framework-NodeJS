@@ -2,28 +2,17 @@ require('dotenv').config()
 const path = require("path");
 const htmlReports = process.cwd() +'/reports/html';
 const jsonReports = process.cwd() + "/reports/json";
+const browsers = require('./browsers');
+const baseUrls = require('./baseUrls')
 var dateTime = require('node-datetime');
 
 //const Reporter = require("../support/reporter");
 
 exports.config = {
-    seleniumAddress: "http://127.0.0.1:4444/wd/hub",
-    baseUrl: "https://www.google.com/ncr",
+    seleniumAddress: process.env.SELENIUM_HUB,
+    baseUrl: baseUrls[process.env.TEST_ENVIRONMENT],
     chromeOnly: false,
-    capabilities: {
-        browserName: process.env.TEST_BROWSER_NAME || "firefox",
-        maxInstances: 3,
-        chromeOptions: {
-            args: [ "--headless", "--disable-gpu", "--window-size=1920,1080" ]
-        },
-        metadata: {
-            device: "Macbook Pro 2018",
-            platform: {
-                name: 'osx',
-                version: '10.14'
-            }
-        }
-    },
+    capabilities: browsers[process.env.BROWSER_NAME],
     framework: "custom",
     frameworkPath: require.resolve("protractor-cucumber-framework"),
     specs: ["../features/*.feature"],
@@ -32,7 +21,6 @@ exports.config = {
         browser.ignoreSynchronization = true;
         browser.manage().window().maximize();
         require('babel-register');
-        //Reporter.createDirectory(jsonReports);
     },
     cucumberOpts: {
         strict: true,
@@ -46,16 +34,16 @@ exports.config = {
             automaticallyGenerateReport:true,
             removeExistingJsonReportFile:true,
             displayDuration:true,
-            pageTitle:'N8N Automated Test Reporting',
-            reportName:'N8N Automated Test Report',
-            pageFooter:'<div><p>   N8N Automated Test Report</p></div>',
+            pageTitle:'N8N Automation Test Report',
+            reportName:'N8N Automation Test Report',
+            pageFooter:'<div align="center"><p>   N8N Automation Test Report</p></div>',
             reportPath:htmlReports,
             jsonDir:jsonReports,
             customData: {
                 title: 'Run info',
                 data: [
                     {label: 'Project', value: 'TwentyCI '},
-                    {label: 'Environment', value: 'Staging'},
+                    {label: 'Environment', value: process.env.TEST_ENVIRONMENT.toUpperCase()},
                     {label: 'Execution Start Time', value: dateTime.create().format('H:M d-m-Y')},
 
                 ]
