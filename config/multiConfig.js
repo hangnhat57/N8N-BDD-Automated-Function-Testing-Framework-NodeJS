@@ -1,7 +1,8 @@
-const path = require("path");
+require('dotenv').config();
+const htmlReports = process.cwd() +'/reports/html';
 const jsonReports = process.cwd() + "/reports/json";
-const Reporter = require("../support/reporter");
-const os = require('os');
+var dateTime = require('node-datetime');
+
 exports.config = {
     seleniumAddress: "http://127.0.0.1:4444/wd/hub",
     baseUrl: "http://www.google.com",
@@ -44,16 +45,12 @@ exports.config = {
         browser.ignoreSynchronization = true;
         browser.manage().window().maximize();
         require('babel-register');
-        Reporter.createDirectory(jsonReports);
     },
     cucumberOpts: {
         strict: true,
         format: ['json:./reports/json/cucumber_report.json','./support/allure-reporter.js'],
         require: ["../stepDefinitions/*.js", "../support/*.js"],
         tags: "(@AllureScenario or @CucumberScenario or @ProtractorScenario) and (not @DatabaseTest)"
-    },
-    onComplete: function () {
-        Reporter.createHTMLReport();
     },
     plugins: [{
         package: 'protractor-multiple-cucumber-html-reporter-plugin',
@@ -63,13 +60,15 @@ exports.config = {
             displayDuration:true,
             pageTitle:'N8N Automated Test Reporting',
             reportName:'N8N Automated Test Report',
-            pageFooter:'<div><p>N8N Automated Test Report</p></div>',
+            pageFooter:'<div><p>   N8N Automated Test Report</p></div>',
+            reportPath:htmlReports,
+            jsonDir:jsonReports,
             customData: {
                 title: 'Run info',
                 data: [
                     {label: 'Project', value: 'TwentyCI '},
-                    {label: 'Environment', value: 'staging'},
-                    {label: 'Execution Start Time', value: Date.now().toLocaleString()},
+                    {label: 'Environment', value: 'Staging'},
+                    {label: 'Execution Start Time', value: dateTime.create().format('H:M d-m-Y')},
 
                 ]
             }
