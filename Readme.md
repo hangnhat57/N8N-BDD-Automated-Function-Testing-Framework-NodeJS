@@ -7,11 +7,11 @@
 * Lots of `waitfor…` functions to avoid `sleep`
 * Helper to open and close windows, tabs, popups, etc
 * Most of the actions have a retry logic inside, which retries the action 3 (or configurable number of) times before an error is thrown
-* Custom matcher like `.toBePresent()` or `toBeDisplayed()`; 
 * Ready for tests written with [`async` / `await`](https://github.com/angular/protractor/blob/master/docs/async-await.md) (every function returns a promise)
-* Beatiful reporting with CI integrate ready with Allure2 / Protractor Multiple Cucumber Html Reporter 
+* Beatiful reporting with `CI integrate ready` with Allure2 / Protractor Multiple Cucumber Html Reporter 
 ## Table of Contents
 * [Installation](#installation)
+* [Structure](#structure)
 * [Browser Helper Library](#lib)
 
 
