@@ -1,7 +1,6 @@
 
 import { browser, by, element, } from 'protractor';
-
-const DEBUG=false;
+import { DEBUG } from "./defaultValues";
 
 
 export function getElementFinder(target) {

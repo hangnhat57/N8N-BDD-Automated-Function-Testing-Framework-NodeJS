@@ -1,7 +1,7 @@
 
 import { browser} from 'protractor';
 import { getElementArrayFinder, getElementFinder, log } from './utils';
-const DEFAULT_TIMEOUT = 20;
+import {DEFAULT_TIMEOUT} from "./defaultValues";
 
 
 export function waitToBeNotPresent(target, timeout= DEFAULT_TIMEOUT) {

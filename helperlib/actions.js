@@ -1,9 +1,7 @@
 import { browser, by, protractor } from 'protractor';
 import { getElementFinder, sleep, log } from './utils';
 import { waitToBeDisplayed } from './waits';
-
-const DEFAULT_RETRIES = 2;
-const DEFAULT_TIMEOUT = 20;
+import { DEFAULT_RETRIES, DEFAULT_TIMEOUT } from './defaultValues';
 
 
 export function click(target, timeout = DEFAULT_TIMEOUT, tryCount = DEFAULT_RETRIES) {

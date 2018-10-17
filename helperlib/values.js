@@ -2,7 +2,7 @@
 import { browser} from 'protractor';
 import { getElementFinder } from './utils';
 import { waitToBeDisplayed } from './waits';
-import { DEFAULT_RETRIES, DEFAULT_TIMEOUT } from './config';
+import { DEFAULT_RETRIES, DEFAULT_TIMEOUT } from './defaultValues';
 
 
 export function getText(target, timeout = DEFAULT_TIMEOUT, tryCount = DEFAULT_RETRIES){

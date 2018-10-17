@@ -46,9 +46,7 @@ export function openUrlInNewTab(url) {
 				windowLength = handles.length;
 				return browser.driver.executeScript(
 					(url, tempId) => {
-						var a = document.getElementById(
-							tempId
-						) as HTMLAnchorElement;
+						var a = document.getElementById(tempId);
 						if (!a) {
 							a = document.createElement('a');
 							a.target = '_blank';
