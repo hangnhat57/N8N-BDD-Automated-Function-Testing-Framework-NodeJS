@@ -43,8 +43,12 @@ npm run test
 ├── stepDefinitions => Includes step files for Cucumber
 └── support => Include util functions for test runner
 ```
-
-
+<a id="report"></a>
+## Sample Report
+### Allure
+![Allure](./images/allure.png)
+### HTML
+![Html](./images/html.png)
 <a id="lib"></a>
 ## Browser Helper Library
 ### Actions 
