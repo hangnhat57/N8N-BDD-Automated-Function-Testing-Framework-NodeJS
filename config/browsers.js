@@ -15,15 +15,15 @@ exports.browsers={
     },
     firefox : {
         browserName: "firefox",
-        shardTestFiles: false,
-          'moz:firefoxOptions': {
-              args: [ "--headless" ]
-          },
-          metadata: {
-              device: 'Dell XPS',
-              platform: {
-                  name: 'windows',
-                  version: '10'
+        maxInstances: 3,
+        'moz:firefoxOptions': {
+            args: [ "--headless" ]
+        },
+        metadata: {
+            device: 'Dell XPS',
+            platform: {
+                name: 'windows',
+                version: '10'
               }
           }
       }

@@ -1,12 +1,11 @@
 require('dotenv').config()
-const path = require("path");
 const htmlReports = process.cwd() +'/reports/html';
 const jsonReports = process.cwd() + "/reports/json";
-const browsers = require('./browsers');
-const baseUrls = require('./baseUrls')
+const {browsers} = require('./browsers');
+const {baseUrls} = require('./baseUrls')
 var dateTime = require('node-datetime');
 
-//const Reporter = require("../support/reporter");
+
 
 exports.config = {
     seleniumAddress: process.env.SELENIUM_HUB,
@@ -24,7 +23,7 @@ exports.config = {
     },
     cucumberOpts: {
         strict: true,
-        format: ['./support/allure-reporter.js','json:./reports/results.json'],
+        format: ['pretty','./support/allure-reporter.js','json:./reports/results.json'],
         require: ["../stepDefinitions/*.js", "../support/*.js"],
         tags: "(@AllureScenario or @CucumberScenario or @ProtractorScenario) and (not @DatabaseTest)"
     },
@@ -36,7 +35,7 @@ exports.config = {
             displayDuration:true,
             pageTitle:'N8N Automation Test Report',
             reportName:'N8N Automation Test Report',
-            pageFooter:'<div align="center"><p>   N8N Automation Test Report</p></div>',
+            pageFooter:'<div align="center"><p>N8N Automation Test Report</p></div>',
             reportPath:htmlReports,
             jsonDir:jsonReports,
             customData: {

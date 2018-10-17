@@ -1,7 +1,7 @@
 require('dotenv').config()
 const htmlReports = process.cwd() +'/reports/html';
 const jsonReports = process.cwd() + "/reports/json";
-const baseUrls = require('./baseUrls')
+const {baseUrls} = require('./baseUrls');
 var dateTime = require('node-datetime');
 
 exports.config = {
