@@ -1,8 +1,9 @@
-import BasePage from "./basePage";
-import Globals from "../support/globals";
+import BasePagePo from "./basePage.po";
+import Globals from "../cucumber_support/globals";
+import { selectOptionByText , click, log } from "../browser_utilities";
 const globals = new Globals();
 const expect = globals.expect;
-export class homePage extends BasePage{
+export class homePagePo extends BasePagePo{
     constructor(){
         super();
         this.rdBuy = $("label[id='lblrdCustomBuy']");
@@ -22,21 +23,22 @@ export class homePage extends BasePage{
         this.btnSearch.click();
     }
     async shouldBeOnHomePage(){
+        log("verify browser title");
         await expect(browser.getTitle()).to.eventually.contains("Best Estate and Lettings Agents in UK");
-
+        log("Finished!")
     }
     selectOptions(element,value){
         if(value!==null && value!=='' && value!=='-'){
-            this.selectHelper.selectByValue(element,value);
+            selectOptionByText(element,value);
         }
     };
     clickBuyRent(option){
       switch (option) {
         case 'Buy':
-            this.rdBuy.click();
+            click(this.rdBuy);
             break;
         case 'Rent':
-            this.rdRent.click();
+            click(this.rdRent);
             break;
         default:
             console.log("No option selected , leave it as default");

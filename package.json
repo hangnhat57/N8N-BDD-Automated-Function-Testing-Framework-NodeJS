@@ -20,9 +20,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "protractor config/config.js",
-    "test-parallel": "protractor config/multiConfig.js",
-    "test-ob": "protractor config/browserConfig.js",
+    "test": "protractor framework_config/config.js",
     "webdriver-start": "webdriver-manager start",
     "webdriver-update": "webdriver-manager update"
   },
@@ -37,8 +35,9 @@
     "cucumber-html-report": "^0.6.2",
     "cucumber-html-reporter": "^3.0.4",
     "mkdirp": "^0.5.1",
-    "protractor": "^5.2.0",
-    "protractor-cucumber-framework": "^4.1.1"
+    "protractor": "^5.4.1",
+    "protractor-cucumber-framework": "^4.1.1",
+    "protractor-testability-plugin": "^1.2.0"
   },
   "repository": "https://github.com/hangnhat57/N8N-BDD-Automated-Function-Testing-Framework-NodeJS",
   "dependencies": {

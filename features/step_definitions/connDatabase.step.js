@@ -1,7 +1,7 @@
 //Commenting out database step definition for travis tests to pass
 /*
-var ConnectDB = require('../support/database');
-var World = require('../support/world');
+var ConnectDB = require('../cucumber_support/database');
+var World = require('../cucumber_support/world');
 
 var databaseConnect = function () {
     'use strict';

@@ -1,4 +1,4 @@
-import Globals from '../support/globals';
+import Globals from '../../cucumber_support/globals';
 import { browser } from 'protractor';
 import { Given } from "cucumber";
 

@@ -1,17 +1,14 @@
-import GoogleSearch from '../pages/GoogleSearch';
-import Globals from '../support/globals';
+
+import Globals from '../../cucumber_support/globals';
 import { browser } from 'protractor';
 import { When, Then } from "cucumber";
-
+import {GoogleSearchPo} from "../../pages/googleSearch.po";
 // Chai
 const globals = new Globals();
 const expect = globals.expect;
 
-// GoogleSearch page instance
-const googleSearch = new GoogleSearch();
-
 When(/^I type "(.*?)"$/, (text) => {
-    return googleSearch.searchTextBox.sendKeys(text);
+    return new GoogleSearchPo().searchFor(text)
 });
 
 Then(/^I click search button$/,  () => {
