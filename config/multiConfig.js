@@ -8,6 +8,7 @@ exports.config = {
     seleniumAddress: process.env.SELENIUM_HUB,
     baseUrl: baseUrls[process.env.TEST_ENVIRONMENT],
     chromeOnly: false,
+    ignoreUncaughtExceptions: true,
     multiCapabilities: [
     {
       browserName: "chrome",
@@ -51,7 +52,7 @@ exports.config = {
         strict: true,
         format: ['json:./reports/json/cucumber_report.json','./support/allure-reporter.js'],
         require: ["../stepDefinitions/*.js", "../support/*.js"],
-        tags: "(@AllureScenario or @CucumberScenario or @ProtractorScenario) and (not @DatabaseTest)"
+        tags: "not @ignore"
     },
     plugins: [{
         package: 'protractor-multiple-cucumber-html-reporter-plugin',

@@ -14,7 +14,7 @@ When(/^I type "(.*?)"$/, (text) => {
     return googleSearch.searchTextBox.sendKeys(text);
 });
 
-Then(/^I click search button$/, () => {
+Then(/^I click search button$/,  () => {
     //Here performing keyboard enter as google's search button keeps on changing
-    return browser.actions().sendKeys(protractor.Key.ENTER).perform();
+    return  browser.actions().sendKeys(protractor.Key.ENTER).perform();
 });

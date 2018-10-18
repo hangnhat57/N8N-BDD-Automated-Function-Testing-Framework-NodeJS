@@ -1,11 +1,21 @@
 "use strict";
+import {setDefaultTimeout} from "cucumber";
 
-const { BeforeAll, After, Status } = require("cucumber");
+const { BeforeAll,Before, After, Status } = require("cucumber");
 const conf = require("../config/config").config;
-
-    BeforeAll({timeout: 10*1000}, function() {
-      return browser.get(conf.baseUrl);
+    BeforeAll({timeout: 120*1000}, function() {
+        console.log("\n Start executing test suite ....")
     });
+    Before(function (){
+        return setDefaultTimeout(120 * 1000);
+    });
+    Before({tags:"@Romans"},function(){
+        return browser.get(conf.baseUrl);
+    });
+    Before({tags:"@AllureScenario or @CucumberScenario or @ProtractorScenario"},function (){
+        return browser.get("https://google.com/ncr");
+    });
+
   
     After(function(scenario) {
       if (scenario.result.status === Status.FAILED) {

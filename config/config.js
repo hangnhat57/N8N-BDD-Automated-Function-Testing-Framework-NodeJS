@@ -2,7 +2,7 @@ require('dotenv').config()
 const htmlReports = process.cwd() +'/reports/html';
 const jsonReports = process.cwd() + "/reports/json";
 const {browsers} = require('./browsers');
-const {baseUrls} = require('./baseUrls')
+const {baseUrls} = require('./baseUrls');
 var dateTime = require('node-datetime');
 
 
@@ -16,6 +16,7 @@ exports.config = {
     frameworkPath: require.resolve("protractor-cucumber-framework"),
     specs: ["../features/*.feature"],
     exclude: "../features/database.feature",
+    ignoreUncaughtExceptions: true,
     onPrepare: function() {
         browser.ignoreSynchronization = true;
         browser.manage().window().maximize();
@@ -25,7 +26,7 @@ exports.config = {
         strict: true,
         format: ['pretty','./support/allure-reporter.js','json:./reports/results.json'],
         require: ["../stepDefinitions/*.js", "../support/*.js"],
-        tags: "(@AllureScenario or @CucumberScenario or @ProtractorScenario) and (not @DatabaseTest)"
+        tags: "not @ignore"
     },
     plugins: [{
         package: 'protractor-multiple-cucumber-html-reporter-plugin',
