@@ -1,6 +1,6 @@
 import { browser, by, protractor } from 'protractor';
-import { getElementFinder, sleep, log } from './utils';
-import { waitToBeDisplayed } from './waits';
+import { getElementFinder, sleep, log } from './browserUtils';
+import { waitToBeDisplayed } from './browserWait';
 import { DEFAULT_RETRIES, DEFAULT_TIMEOUT } from './defaultValues';
 
 

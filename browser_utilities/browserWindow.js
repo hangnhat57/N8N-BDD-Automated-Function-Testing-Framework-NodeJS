@@ -1,7 +1,7 @@
 
 import { browser } from 'protractor';
-import { waitForUrlMatch, waitForWindowCount } from './waits';
-import { click } from './actions';
+import { waitForUrlMatch, waitForWindowCount } from './browserWait';
+import { click } from './browserActions';
 
 
 export function scrollToTop() {

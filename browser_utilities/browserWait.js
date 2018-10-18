@@ -1,6 +1,6 @@
 
 import { browser} from 'protractor';
-import { getElementArrayFinder, getElementFinder, log } from './utils';
+import { getElementArrayFinder, getElementFinder, log } from './browserUtils';
 import {DEFAULT_TIMEOUT} from "./defaultValues";
 
 
