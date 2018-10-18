@@ -17,7 +17,9 @@
 * Beatiful reporting with `CI integrate ready` with Allure2 / Protractor Multiple Cucumber Html Reporter 
 ## Table of Contents
 * [Installation](#installation)
+* [Architect](#architect)
 * [Structure](#structure)
+* [Sample Report](#report)
 * [Usage](#usage)
 * [Browser Helper Library](#lib)
 * [TODO](#todo)
@@ -37,8 +39,9 @@ npm run test
 
 
 
-
-
+<a id="architect"></a>
+## Framework Architect:
+![Architect](./images/architect.png)
 <a id="structure"></a>
 ## Framework Structure:
 ```
@@ -420,7 +423,7 @@ Performs a browser sleep. Normally it should be avoided because of its performan
 
 ___
 <a id="todo"></a>
-##TODO
+## TODO
 #### Create Test Architecture diagram
 #### Explain How to Integrate with Jenkins
 #### Implement Database Utilities for database testing
