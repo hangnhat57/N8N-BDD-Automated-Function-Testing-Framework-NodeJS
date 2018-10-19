@@ -6,7 +6,7 @@ const {baseUrls} = require('./baseUrls.conf');
 const {cucumberOpts} = require('./cucumberOpts.conf');
 const  TEST_ENVIRONMENT = process.env.TEST_ENVIRONMENT || "staging";
 const SELENIUM_HUB = process.env.SELENIUM_HUB || "http://127.0.0.1:4444/wd/hub";
-const TEST_PARALLEL = process.env.TEST_PARALLEL || null;
+const TEST_PARALLEL = process.env.TEST_PARALLEL || '';
 
 let config = {
     seleniumAddress: SELENIUM_HUB,
@@ -19,7 +19,6 @@ let config = {
     restartBrowserBetweenTests:true,
     ignoreUncaughtExceptions: true,
     onPrepare: function() {
-        browser.manage().window().maximize();
         require('babel-register');
     }
 };

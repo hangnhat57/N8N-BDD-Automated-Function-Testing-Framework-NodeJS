@@ -1,10 +1,10 @@
 
 import { Then } from "cucumber";
-import { GoogleSearchPo } from "../../pages/googleSearch.po";
+import { GoogleSearch } from "../../pages/googleSearch.po";
 
 // GoogleSearchPo page instance
 
-Then(/^I clear search textbox$/, () => {
-    return new GoogleSearchPo().searchTextBox.clear();
+Then(/^I clear search textbox$/, async () => {
+    return await new GoogleSearch().searchTextBox.clear();
 });
 

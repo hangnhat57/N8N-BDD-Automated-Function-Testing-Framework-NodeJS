@@ -1,9 +1,12 @@
-import BasePagePo from "./basePage.po";
+import BasePage from "./basePage.po";
 import Globals from "../cucumber_support/globals";
 import { selectOptionByText , click, log } from "../browser_utilities";
 const globals = new Globals();
 const expect = globals.expect;
-export class homePagePo extends BasePagePo{
+import * as blueharvest from 'blue-harvest';
+const homepagePath = process.cwd() + "/visual-regression/homepage.png";
+
+export class HomePage extends BasePage{
     constructor(){
         super();
         this.rdBuy = $("label[id='lblrdCustomBuy']");
@@ -14,31 +17,34 @@ export class homePagePo extends BasePagePo{
         this.slMinBed = $("select[id='CustomMinBed']");
         this.btnSearch = $("button[id='CustomSearch']");
     }
-    searchForProperties(buyRentOption,location,minPrice,maxPrice,minBedroom){
-        this.clickBuyRent(buyRentOption);
-        this.ipPropertySearchLocation.sendKeys(location);
-        this.selectOptions(this.slMinPrice,minPrice);
-        this.selectOptions(this.slMaxPrice,maxPrice);
-        this.selectOptions(this.slMinBed,minBedroom);
-        this.btnSearch.click();
+    async searchForProperties(buyRentOption,location,minPrice,maxPrice,minBedroom){
+        await this.clickBuyRent(buyRentOption);
+        await this.ipPropertySearchLocation.sendKeys(location);
+        await this.selectOptions(this.slMinPrice,minPrice);
+        await this.selectOptions(this.slMaxPrice,maxPrice);
+        await this.selectOptions(this.slMinBed,minBedroom);
+        await this.btnSearch.click();
     }
     async shouldBeOnHomePage(){
+	    const data = await browser.takeScreenshot();
+	    const result = await blueharvest.compareScreenshot(data, homepagePath);
+	    await expect(result).to.be.true;
         log("verify browser title");
         await expect(browser.getTitle()).to.eventually.contains("Best Estate and Lettings Agents in UK");
         log("Finished!")
     }
-    selectOptions(element,value){
+    async selectOptions(element,value){
         if(value!==null && value!=='' && value!=='-'){
-            selectOptionByText(element,value);
+            await selectOptionByText(element,value);
         }
     };
-    clickBuyRent(option){
+    async clickBuyRent(option){
       switch (option) {
         case 'Buy':
-            click(this.rdBuy);
+            await click(this.rdBuy);
             break;
         case 'Rent':
-            click(this.rdRent);
+            await click(this.rdRent);
             break;
         default:
             console.log("No option selected , leave it as default");
@@ -47,6 +53,6 @@ export class homePagePo extends BasePagePo{
     };
 
 
-    
+
 
 }
