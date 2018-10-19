@@ -1,20 +1,17 @@
-import { sendKeys } from "../browser_utilities";
-const globals = new Globals();
-const expect = globals.expect;
-import * as blueharvest from 'blue-harvest';
-import Globals from "../cucumber_support/globals";
-const google = process.cwd() + "/visual-regression/google.png";
+import { sendKeys, waitToBePresent } from "../browser_utilities";
+import { compareVisual, masking } from "../visual_utilities/elementPath";
+import BasePage from "./basePage.po";
 
-export class GoogleSearch {
+export class GoogleSearch extends BasePage{
     constructor(){
+    	super();
         this.searchTextBox = $("#lst-ib");
         this.searchButton = $("input[value='Google Search']");
+        this.logo = $("img[id='hplogo']");
     }
     async searchFor(values){
-	    const mask = await blueharvest.addMask(this.searchTextBox, 'gray', 99999, 10, 20, 1.1);
-	    const data = await browser.takeScreenshot();
-	    const result = await blueharvest.compareScreenshot(data, google);
-	    await expect(result).to.be.true;
+    	let mask = await masking(this.logo);
+    	await compareVisual('google',mask);
         await sendKeys(this.searchTextBox,values);
     }
 }

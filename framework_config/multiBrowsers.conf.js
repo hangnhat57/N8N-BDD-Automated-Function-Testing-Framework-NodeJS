@@ -3,7 +3,7 @@ exports.multiCapabilities = [
         browserName: "chrome",
         shardTestFiles: false,
         chromeOptions: {
-            args: [ "--headless", "--disable-gpu", "--window-size=1920,1080" ]
+            args: [   "--window-size=1920,1080" ]
         },
         metadata: {
             device: "Macbook Pro 2018",
@@ -17,7 +17,7 @@ exports.multiCapabilities = [
         browserName: "firefox",
         shardTestFiles: false,
         'moz:firefoxOptions': {
-            args: [ "--headless" ,"--window-size=1920,1080"]
+            "args": [ "--window-size=1920,1080"]
         },
         metadata: {
             device: 'Dell XPS',

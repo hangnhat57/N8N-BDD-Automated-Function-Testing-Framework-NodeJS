@@ -3,7 +3,7 @@ import chaiAsPromised from 'chai-as-promised';
 import { browser } from 'protractor';
 
 
-class BasePage {
+class BasePagePo {
 
     constructor(){
         this.browser = browser;
@@ -12,4 +12,4 @@ class BasePage {
     }
 
 }
-export default BasePage;
+export default BasePagePo;

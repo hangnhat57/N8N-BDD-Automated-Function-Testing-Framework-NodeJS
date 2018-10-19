@@ -17,7 +17,7 @@ exports.browsers={
         browserName: "firefox",
         maxInstances: 3,
         'moz:firefoxOptions': {
-            args: [ "--headless" ]
+            "args": [ "-headless", "--disable-gpu","--window-size=1920,1080" ]
         },
         metadata: {
             device: 'Dell XPS',
@@ -26,5 +26,8 @@ exports.browsers={
                 version: '10'
               }
           }
-      }
+      },
+    safari : {
+        browserName: "safari"
+    }
 };
