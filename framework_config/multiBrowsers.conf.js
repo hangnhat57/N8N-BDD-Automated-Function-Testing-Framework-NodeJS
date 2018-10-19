@@ -17,7 +17,7 @@ exports.multiCapabilities = [
         browserName: "firefox",
         shardTestFiles: false,
         'moz:firefoxOptions': {
-            args: [ "--headless" ]
+            args: [ "--headless" ,"--window-size=1920,1080"]
         },
         metadata: {
             device: 'Dell XPS',

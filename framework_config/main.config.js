@@ -8,25 +8,29 @@ const  TEST_ENVIRONMENT = process.env.TEST_ENVIRONMENT || "staging";
 const SELENIUM_HUB = process.env.SELENIUM_HUB || "http://127.0.0.1:4444/wd/hub";
 const TEST_PARALLEL = process.env.TEST_PARALLEL || '';
 
-let config = {
-    seleniumAddress: SELENIUM_HUB,
+let mainConfig = {
+	allScriptsTimeout: 60000,
+	getPageTimeout: 60000,
+	seleniumAddress: SELENIUM_HUB,
     baseUrl: baseUrls[TEST_ENVIRONMENT],
     chromeOnly: false,
     framework: "custom",
     frameworkPath: require.resolve("protractor-cucumber-framework"),
     specs: ["../features/*.feature"],
     exclude: "../features/ignore.feature",
-    restartBrowserBetweenTests:true,
     ignoreUncaughtExceptions: true,
+	directConnect: true,
+	SELENIUM_PROMISE_MANAGER:false,
     onPrepare: function() {
-        require('babel-register');
+	    require('babel-register');
     }
 };
 if(TEST_PARALLEL.toUpperCase() === "ON"){
-    config.multiCapabilities = multiCapabilities;
+    mainConfig.multiCapabilities = multiCapabilities;
 }else{
-    config.capabilities =  browsers[process.env.BROWSER_NAME || 'chrome'];
+    mainConfig.capabilities =  browsers[process.env.BROWSER_NAME || 'chrome'];
 }
-config.plugins = plugins;
-config.cucumberOpts = cucumberOpts;
-module.exports.config = config;
+mainConfig.plugins = plugins;
+mainConfig.cucumberOpts = cucumberOpts;
+process.env['UPDATE_GOLDENS'] = "";
+module.exports.config = mainConfig;
