@@ -8,10 +8,3 @@ Feature: To Demo Testing for Romans
     |Buy  |MK5 8FT  |-         |-         |-          |
     Then I should be in result page for those properties
 
-  Scenario: Search for properties for sale1
-    Given I on home page
-    When I search for properties for sale with these criteria
-    |Type |Location |MinPrice  |MaxPrice  | MinBedrooms|
-    |Buy  |MK5 8FT  |-         |-         |-          |
-    Then I should be in result page for those properties
-

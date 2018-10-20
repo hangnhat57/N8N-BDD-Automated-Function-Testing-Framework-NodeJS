@@ -1,4 +1,4 @@
-let config = require('./main.config').config;
+let config = require ('./main.config').config;
 
 // If UPDATE_GOLDENS is "1" or "true", blue-harvest will update the reference
 // screenshots instead of comparing against them.

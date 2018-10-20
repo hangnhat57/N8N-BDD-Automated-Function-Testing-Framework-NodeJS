@@ -4,7 +4,7 @@ import chaiAsPromised from 'chai-as-promised';
 class Globals {
 	constructor() {
 		this.expect = chai.expect;
-		chai.use(chaiAsPromised);
+		chai.use (chaiAsPromised);
 	}
 }
 

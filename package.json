@@ -21,7 +21,7 @@
   "main": "index.js",
   "scripts": {
     "test": "protractor framework_config/main.config.js",
-    "update-visual": "protractor framework_config/updateGolden.config.js",
+    "visual-update": "protractor framework_config/updateGolden.config.js",
     "webdriver-start": "webdriver-manager start",
     "webdriver-update": "webdriver-manager update"
   },

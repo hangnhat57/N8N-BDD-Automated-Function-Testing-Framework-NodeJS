@@ -1,4 +1,4 @@
 #!/bin/bash
-rm -rf ./reports/*
+rm -rf ./reports/* ./visual-baseline
 
 

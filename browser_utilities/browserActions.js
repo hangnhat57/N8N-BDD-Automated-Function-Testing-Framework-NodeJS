@@ -9,14 +9,15 @@ export function click(target, timeout = DEFAULT_TIMEOUT, tryCount = DEFAULT_RETR
 	return waitToBeDisplayed (target, timeout)
 		.then (() => {
 			return browser.wait (
-				protractor.ExpectedConditions.elementToBeClickable(e),
+				protractor.ExpectedConditions.elementToBeClickable (e),
 				timeout,
 				`Element ${e.locator ()} not clickable`
 			);
 		})
 		.then (() => e.click ())
 		.then (
-			() => {}, (error) => {
+			() => {
+			}, (error) => {
 				if (tryCount > 0) {
 					console.log (`Click error: ${error}`);
 					console.log (`Click retry ${tryCount} on target ${e.locator ()}`);
@@ -34,7 +35,7 @@ export function hover(target, timeout = DEFAULT_TIMEOUT) {
 	const e = getElementFinder (target);
 	return waitToBeDisplayed (target, timeout)
 		.then (() => {
-			return browser.actions().mouseMove(e).perform();
+			return browser.actions ().mouseMove (e).perform ();
 		})
 		.catch (() => {
 			log ('Fallback for hover element');
@@ -78,7 +79,7 @@ export function sendKeys(target, value, timeout = DEFAULT_TIMEOUT, tryCount = DE
 
 
 export function selectOption(option, timeout = DEFAULT_TIMEOUT) {
-	return click (option);
+	return click (option, timeout);
 }
 
 
@@ -90,6 +91,6 @@ export function selectOptionByText(select, text, timeout = DEFAULT_TIMEOUT) {
 
 
 export function selectOptionByIndex(select, index, timeout = DEFAULT_TIMEOUT) {
-	const e = getElementFinder (select).all(by.tagName ('option')).get(index);
+	const e = getElementFinder (select).all (by.tagName ('option')).get (index);
 	return selectOption (e, timeout);
 }
