@@ -17,6 +17,6 @@ When(/^I search for properties for sale with these criteria$/, async function (t
     await new homePagePo().searchForProperties(buyRentOption,location,minPrice,maxPrice,minBedroom);
 
 });
-Then(/^I should be in result page for those properties$/,   function () {
-       new searchResultPagePo().shouldBeInResultPage(PassedData.location);
+Then(/^I should be in result page for those properties$/,   async function () {
+       await new searchResultPagePo().shouldBeInResultPage(PassedData.location);
 });

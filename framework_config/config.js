@@ -1,3 +1,9 @@
+
+const VisualReview = require('visualreview-protractor');
+var vr = new VisualReview({
+	hostname: 'localhost',
+	port: 7000
+});
 require('dotenv').config();
 const {multiCapabilities} = require('./multiBrowsers.conf');
 const {plugins} = require('./plugins.conf');
@@ -21,7 +27,22 @@ let config = {
     onPrepare: function() {
         browser.manage().window().maximize();
         require('babel-register');
-    }
+        browser.ignoreSynchronization = true;
+    },
+	beforeLaunch: function() {
+		// Creates a new run under project name 'myProject', suite 'mySuite'.
+		return vr.initRun('DontLeave', 'MeAlone');
+	},
+
+	afterLaunch: function(exitCode) {
+		// finalizes the run, cleans up temporary files
+		return vr.cleanup(exitCode);
+	},
+
+	// expose VisualReview protractor api in tests
+	params: {
+		visualreview: vr
+	}
 };
 if(TEST_PARALLEL.toUpperCase() === "ON"){
     config.multiCapabilities = multiCapabilities;

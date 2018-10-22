@@ -3,7 +3,7 @@ exports.browsers={
         browserName:"chrome",
         maxInstances: 3,
         chromeOptions: {
-            args: [ "--headless", "--disable-gpu", "--window-size=1920,1080" ]
+            args: [  "--disable-gpu", "--window-size=1920,1080" ]
         },
         metadata: {
             device: "Macbook Pro 2018",
