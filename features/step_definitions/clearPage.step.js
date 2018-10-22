@@ -1,5 +1,5 @@
 import { Then } from "cucumber";
-import { GoogleSearch } from "../../pages/googleSearch.po";
+import { GoogleSearch } from "../../pages/googleSearch.desktop.po";
 
 // GoogleSearchPo page instance
 

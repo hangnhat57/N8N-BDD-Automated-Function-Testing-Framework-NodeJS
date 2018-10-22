@@ -8,7 +8,7 @@ const TEST_ENVIRONMENT = process.env.TEST_ENVIRONMENT || "staging";
 const SELENIUM_HUB = process.env.SELENIUM_HUB || "http://127.0.0.1:4444/wd/hub";
 const TEST_PARALLEL = process.env.TEST_PARALLEL || '';
 let mainConfig = {
-	allScriptsTimeout: 3*60*000,
+	allScriptsTimeout: 3*60*1000,
 	getPageTimeout: 60000,
 	seleniumAddress: SELENIUM_HUB,
 	baseUrl: baseUrls[TEST_ENVIRONMENT],
@@ -25,7 +25,7 @@ let mainConfig = {
 		await browser.getProcessedConfig().then((config)=>{
 			browser.params.metadata = config.capabilities.metadata;
 			switch(config.capabilities.metadata.platform.type) {
-				case 'mobile': config.cucumberOpts.tags = "@mobile and not @ingone";break;
+				case 'mobile': config.cucumberOpts.tags = "@mobile and not @ignore";break;
 				case 'desktop': config.cucumberOpts.tags = "@desktop and not @ignore";break;
 				default: console.log("No platform specific in metadata, the test might be break"); break;
 			}

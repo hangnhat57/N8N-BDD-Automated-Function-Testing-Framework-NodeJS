@@ -1,7 +1,7 @@
 import Globals from '../../cucumber_support/globals';
 import { browser } from 'protractor';
 import { When, Then } from "cucumber";
-import { GoogleSearch } from "../../pages/googleSearch.po";
+import { GoogleSearch } from "../../pages/googleSearch.desktop.po";
 import { GoogleSearchMobile } from '../../pages/googleSearch.mobile.po';
 // Chai
 const globals = new Globals ();

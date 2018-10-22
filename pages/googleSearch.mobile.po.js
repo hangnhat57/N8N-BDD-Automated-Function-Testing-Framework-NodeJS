@@ -1,6 +1,6 @@
 import { sendKeys, click } from "../browser_utilities";
 import { compareVisual, masking } from "../visual_utilities/visualHelper";
-import BasePage from "./basePage.po";
+import BasePage from "./basePage";
 
 export class GoogleSearchMobile extends BasePage {
 	constructor() {

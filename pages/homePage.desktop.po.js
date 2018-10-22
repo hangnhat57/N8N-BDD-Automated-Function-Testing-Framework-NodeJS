@@ -1,4 +1,4 @@
-import BasePage from "./basePage.po";
+import BasePage from "./basePage";
 import { selectOptionByText, click } from "../browser_utilities";
 import Globals from "../cucumber_support/globals";
 
@@ -7,7 +7,7 @@ const expect = globals.expect;
 import { compareVisual, masking } from "../visual_utilities/visualHelper";
 
 
-export class HomePage extends BasePage {
+export class HomePageDesktop extends BasePage {
 	constructor() {
 		super ();
 		this.rdBuy = $ ("label[id='lblrdCustomBuy']");
@@ -41,7 +41,7 @@ export class HomePage extends BasePage {
 		let masked;
 		masked = await masking (maskingArray);
 		await click ($ (".body"));
-		await compareVisual ('romansHomePage', masked);
+		await compareVisual ('HomePage', masked);
 		await this.expect (browser.getTitle ()).to.eventually.contains ("Best Estate and Lettings Agents in UK");
 	}
 
