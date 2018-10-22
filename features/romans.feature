@@ -7,4 +7,4 @@ Feature: To Demo Testing for Romans
     |Type |Location |MinPrice  |MaxPrice  | MinBedrooms|
     |Buy  |MK5 8FT  |-         |-         |-          |
     Then I should be in result page for those properties
-
+    

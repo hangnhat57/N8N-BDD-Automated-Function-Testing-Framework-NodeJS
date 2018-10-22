@@ -40,7 +40,7 @@ export class HomePage extends BasePage {
 			this.maskedbutton];
 		let masked;
 		masked = await masking (maskingArray);
-		click ($ (".body"));
+		await click ($ (".body"));
 		await compareVisual ('romansHomePage', masked);
 		await this.expect (browser.getTitle ()).to.eventually.contains ("Best Estate and Lettings Agents in UK");
 	}
