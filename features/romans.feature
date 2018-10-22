@@ -1,4 +1,4 @@
-@Romans
+@Romans @desktop
 Feature: To Demo Testing for Romans
 
   Scenario: Search for properties for sale

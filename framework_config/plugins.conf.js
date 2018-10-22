@@ -10,6 +10,8 @@ exports.plugins = [
 		options: {
 			automaticallyGenerateReport: true,
 			removeExistingJsonReportFile: true,
+			removeOriginalJsonReportFile: true,
+			openReportInBrowser:true,
 			displayDuration: true,
 			pageTitle: 'N8N Automation Test Report',
 			reportName: 'N8N Automation Test Report',

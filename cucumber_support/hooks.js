@@ -1,7 +1,7 @@
 "use strict";
 import { browser } from 'protractor';
 import { setDefaultTimeout } from "cucumber";
-
+let metadata;
 const sec = 1000;
 const { BeforeAll, Before, After, Status } = require ("cucumber");
 const conf = require ("../framework_config/main.config").config;
@@ -12,8 +12,8 @@ Before (function () {
 	return setDefaultTimeout (60 * sec);
 });
 Before (async function () {
-	return await browser.getCapabilities ().then (function (cap) {
-		setBrowserName (cap);
+	return await browser.getProcessedConfig().then((config)=>{
+		metadata = config.capabilities.metadata;
 	});
 });
 Before ({ tags: "@Romans" }, async function () {
@@ -34,19 +34,3 @@ After (async function (scenario) {
 	}
 	await browser.restart ();
 });
-
-function setBrowserName(cap) {
-	let browserName = cap.map_.get ('browserName');
-	let isMobile = cap.map_.get ('mobileEmulationEnabled');
-	if (isMobile) {
-		let rotatable = cap.map_.get ('rotatable');
-		if (rotatable) {
-			browserName = 'chrome-android'
-		} else {
-			browser.version = '12';
-			browserName = 'safari-ios'
-		}
-	}
-	browser.browserName = browserName;
-
-}

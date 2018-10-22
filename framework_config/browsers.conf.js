@@ -1,3 +1,5 @@
+const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
+
 exports.browsers = {
 	chrome: {
 		browserName: "chrome",
@@ -5,6 +7,7 @@ exports.browsers = {
 		chromeOptions: {
 			args: [
 				"--headless",
+				`user-agent=${userAgent}`,
 				"--window-size=1920,1080",
 				'--disable-device-emulation',
 				'--disable-network-throttling',
@@ -13,8 +16,12 @@ exports.browsers = {
 		},
 
 		metadata: {
+			browser:{
+				name:'chrome',
+			},
 			device: "Macbook Pro 2018",
 			platform: {
+				type: 'desktop',
 				name: 'osx',
 				version: '10.14'
 			}
@@ -32,8 +39,12 @@ exports.browsers = {
 			]
 		},
 		metadata: {
-			device: 'Surface Book 2',
+			device: 'Dell XPS',
+			browser:{
+				name:'firefox',
+			},
 			platform: {
+				type: 'desktop',
 				name: 'windows',
 				version: '10'
 			}
@@ -55,11 +66,12 @@ exports.browsers = {
 		},
 		metadata: {
 			browser: {
-				name: 'safari',
-				version: '12.0'
+				name:'safari',
+				version: '12'
 			},
 			device: "iPhone X",
 			platform: {
+				type: 'mobile',
 				name: 'ios',
 				version: '12.0.1'
 			}
@@ -80,15 +92,16 @@ exports.browsers = {
 			]
 		},
 		metadata: {
-			browser: {
+	        browser: {
 				name: 'chrome',
-				version: '12.0'
-			},
-			device: "Pixel2 XL",
-			platform: {
-				name: 'android',
-				version: '8'
-			}
-		}
+				version: '58'
+	        },
+	        device: "Galaxy S5",
+	        platform: {
+				type: 'mobile',
+	            name: 'android',
+	            version: '8'
+	        }
+	    }
 	}
 };

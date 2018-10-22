@@ -7,9 +7,8 @@ const { cucumberOpts } = require ('./cucumberOpts.conf');
 const TEST_ENVIRONMENT = process.env.TEST_ENVIRONMENT || "staging";
 const SELENIUM_HUB = process.env.SELENIUM_HUB || "http://127.0.0.1:4444/wd/hub";
 const TEST_PARALLEL = process.env.TEST_PARALLEL || '';
-
 let mainConfig = {
-	allScriptsTimeout: 60000,
+	allScriptsTimeout: 3*60*000,
 	getPageTimeout: 60000,
 	seleniumAddress: SELENIUM_HUB,
 	baseUrl: baseUrls[TEST_ENVIRONMENT],
@@ -21,13 +20,19 @@ let mainConfig = {
 	ignoreUncaughtExceptions: true,
 	directConnect: false,
 	SELENIUM_PROMISE_MANAGER: false,
-	onPrepare: function () {
+	onPrepare: async function () {
 		browser.ignoreSynchronization = true;
-		require ('babel-register');
-		browser.getCapabilities ().then (function (cap) {
-			console.log (cap);
+		await browser.getProcessedConfig().then((config)=>{
+			browser.params.metadata = config.capabilities.metadata;
+			switch(config.capabilities.metadata.platform.type) {
+				case 'mobile': config.cucumberOpts.tags = "@mobile and not @ingone";break;
+				case 'desktop': config.cucumberOpts.tags = "@desktop and not @ignore";break;
+				default: console.log("No platform specific in metadata, the test might be break"); break;
+			}
 		});
-	}
+		require ('babel-register');
+	},
+
 };
 if (TEST_PARALLEL.toUpperCase () === "ON") {
 	mainConfig.multiCapabilities = multiCapabilities;
@@ -36,5 +41,7 @@ if (TEST_PARALLEL.toUpperCase () === "ON") {
 }
 mainConfig.plugins = plugins;
 mainConfig.cucumberOpts = cucumberOpts;
+
+
 process.env['UPDATE_GOLDENS'] = "";
 module.exports.config = mainConfig;

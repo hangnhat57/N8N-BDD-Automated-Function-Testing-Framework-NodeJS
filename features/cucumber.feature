@@ -1,6 +1,6 @@
 Feature: To search cucumber in google
 
-    @CucumberScenario
+    @CucumberScenario @desktop @mobile
     Scenario: Cucumber Google
       Given I am on google page with title "Google"
       When I type "cucumber"

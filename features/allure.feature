@@ -1,6 +1,6 @@
 Feature: To search allure reports in google
 
-    @AllureScenario
+    @AllureScenario @desktop @mobile
     Scenario: Allure Reports Google
       Given I am on google page with title "Google"
       When I type "allure reports"
