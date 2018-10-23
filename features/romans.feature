@@ -13,6 +13,6 @@ Feature: To Demo Testing for Romans
     Given Mobile I on home page
     When Mobile I search for properties for sale with these criteria
       |Type |Location |
-      |Rent  |MK5 8FT  |
+      |Buy  |MK5 8FT  |
     Then Mobile I should be in result page for those properties
 
