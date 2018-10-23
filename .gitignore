@@ -2,6 +2,6 @@
 reports/
 node_modules/
 .vscode
-.idea
 .env
 *.log
+visual-baseline/

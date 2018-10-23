@@ -1,6 +1,5 @@
 export class PassedData {
-    constructor() {
-        this.location = '';
-    }
-
+	constructor() {
+		this.location = '';
+	}
 }

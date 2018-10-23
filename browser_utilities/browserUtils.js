@@ -1,4 +1,3 @@
-
 import { browser, by, element, } from 'protractor';
 import { DEBUG } from "./defaultValues";
 
@@ -6,7 +5,7 @@ import { DEBUG } from "./defaultValues";
 export function getElementFinder(target) {
 	if (typeof target === 'string') {
 		//noinspection NestedFunctionCallJS
-		return element(by.xpath(target));
+		return element (by.xpath (target));
 	}
 	else {
 		return target;
@@ -17,7 +16,7 @@ export function getElementFinder(target) {
 export function getElementArrayFinder(target) {
 	if (typeof target === 'string') {
 		//noinspection NestedFunctionCallJS
-		return element.all(by.xpath(target));
+		return element.all (by.xpath (target));
 	}
 	else {
 		return target;
@@ -28,31 +27,33 @@ export function getElementArrayFinder(target) {
 
 export function log(message, ignoreDebug = false) {
 	if (DEBUG || ignoreDebug) {
-		console.log(message);
+		console.log (message);
 	}
 }
 
 
 export function flowLog(message) {
-	const flow = browser.controlFlow();
+	const flow = browser.controlFlow ();
 
-	return flow.execute(() => {
-		console.log(message);
+	return flow.execute (() => {
+		console.log (message);
 	});
 }
 
 export function refresh(reason) {
-	flowLog(`Page reload because of: ${reason}`);
-	return browser.refresh();
+	flowLog (`Page reload because of: ${reason}`);
+	return browser.refresh ();
 }
 
 
 export function sleep(time, message = '') {
-	if (!message) {message = 'Sleeping';}
+	if (!message) {
+		message = 'Sleeping';
+	}
 	//noinspection MagicNumberJS
-	message += `: ${(time / 1000).toFixed(2)}s`;
+	message += `: ${(time / 1000).toFixed (2)}s`;
 	if (time > 5000) {
-		flowLog(message);
+		flowLog (message);
 	}
-	return browser.sleep(time);
-	}
+	return browser.sleep (time);
+}
